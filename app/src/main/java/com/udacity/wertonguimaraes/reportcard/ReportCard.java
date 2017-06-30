@@ -5,7 +5,7 @@ package com.udacity.wertonguimaraes.reportcard;
  */
 
 public class ReportCard {
-    private
+    private static final int TOTAL_GRADE = 6;
 
     private String mStudentName;
     private double mPortuguese;
@@ -15,7 +15,8 @@ public class ReportCard {
     private double mChemistry;
     private double mPhysical;
 
-    public ReportCard(String studentName, double portuguese, double math, double geography, double history, double chemistry, double physical) {
+    public ReportCard(String studentName, double portuguese, double math, double geography,
+                      double history, double chemistry, double physical) {
         this.mStudentName = studentName;
         this.mPortuguese = portuguese;
         this.mMath = math;
@@ -23,7 +24,6 @@ public class ReportCard {
         this.mHistory = history;
         this.mChemistry = chemistry;
         this.mPhysical = physical;
-
     }
 
     public String getmStudentName() {
@@ -83,10 +83,27 @@ public class ReportCard {
     }
 
     public double average() {
-        return getmPortuguese() + getmMath() + getmGeography() + getmHistory() + getmChemistry() + getmPhysical();
+        return (getmPortuguese() + getmMath() + getmGeography() + getmHistory()
+                + getmChemistry() + getmPhysical()) / TOTAL_GRADE;
     }
 
     public String toString() {
-        return "Media: xpto";
+        return String.format("Student Name: %s,\n" +
+                        "Portuguese: %.2f,\n" +
+                        "Math: %.2f,\n" +
+                        "Geography: %.2f,\n" +
+                        "History: %.2f,\n" +
+                        "Chemistry: %.2f, \n" +
+                        "Physical: %.2f,\n" +
+                        "Average: %.2f",
+                getmStudentName(),
+                getmPortuguese(),
+                getmMath(),
+                getmGeography(),
+                getmHistory(),
+                getmChemistry(),
+                getmPhysical(),
+                average()
+        );
     }
 }
